@@ -6,10 +6,14 @@ import(
 	"example.com/greetings"
 )
 
+// Import function from diference package
+
 // func main(){
 // 	message := greetings.Hello("Hritesh")
 // 	fmt.Println(message)
 // }
+
+// Error handling
 
 func main(){
 	log.SetPrefix("Greetings : ")
