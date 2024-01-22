@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 	"fmt"
-	// "os"
+	"os"
 
 	_ "github.com/lib/pq"
 )
@@ -12,8 +12,6 @@ import (
 const (
 	host     = "localhost"
 	port     = 5432
-	user	 = "postgres"
-	password = "hritesh"
 	dbname   = "recordings"
   )
 
@@ -27,7 +25,7 @@ const (
 func main(){
 	connection := fmt.Sprintf("host=%s port=%d user=%s "+
     "password=%s dbname=%s sslmode=disable",
-    host, port, user,password, dbname)
+    host, port, os.Getenv("DBUSER"),os.Getenv("DBPASS"), dbname)
 
 	db, err := sql.Open("postgres", connection)
 	if err != nil {
@@ -102,9 +100,5 @@ func addAlbum(db *sql.DB,alb Album) (int64, error) {
 	if err != nil {
         return 0, fmt.Errorf("addAlbum: %v", err)
     }
-    // id, err := result.LastInsertId()
-    // if err != nil {
-    //     return 0, fmt.Errorf("addAlbum: %v", err)
-    // }
     return result, nil
 }
