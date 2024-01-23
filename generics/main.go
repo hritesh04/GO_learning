@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Number interface {
 	int64 | float64
 }
@@ -40,7 +42,7 @@ func SumInts(m map[string]int64) int64 {
 	return s
 }
 
-func SumFloats(m map[strings]float64) float64{
+func SumFloats(m map[string]float64) float64{
 	var s float64
 	for _,v := range m {
 		s+=v
@@ -48,7 +50,7 @@ func SumFloats(m map[strings]float64) float64{
 	return s
 }
 
-func SumsIntsOrFloats[K comparable,V int64 | float64 ](m map[K]V) V {
+func SumIntsOrFloats[K comparable,V int64 | float64 ](m map[K]V) V {
 	var s V
 	for _,v := range m {
 		s+=v
@@ -56,7 +58,7 @@ func SumsIntsOrFloats[K comparable,V int64 | float64 ](m map[K]V) V {
 	return s	
 }
 
-func SumNumbers[K comparable, V Number](m map[k]V) V {
+func SumNumbers[K comparable, V Number](m map[K]V) V {
 	var s V
 	for _,v := range m {
 		s+=v
